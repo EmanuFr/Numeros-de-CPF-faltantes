@@ -9,6 +9,7 @@ let numeroFaltanteVerificador = CPF.slice(9,11).indexOf(null) + 9
 let numeroVerificadorPresente;
 let regiao;
 
+// Identifica a posição do número faltante e a posição do dígito verificador presente
 if (numeroFaltanteVerificador == 9){
     numeroVerificadorPresente = 10
 } else {
@@ -17,7 +18,7 @@ if (numeroFaltanteVerificador == 9){
 
 let numeroFixo = CPF[numeroVerificadorPresente]
 
-
+// Funções para calcular os dígitos verificadores
 function firstDigitCheck(){
     firstDigit = (CPF[0] * 10 + CPF[1] * 9 + CPF[2] * 8 + CPF[3] * 7 + CPF[4] * 6 + CPF[5] * 5 + CPF[6] * 4 + CPF[7] * 3 + CPF[8] * 2) % 11
     if (firstDigit == 0 || firstDigit == 1){
@@ -36,9 +37,10 @@ function secondDigitCheck(){
     }
 }
 
-
+// Informa a posição do número faltante e calcula o número que satisfaz o CPF
 console.log(`O número faltante está na posição ${numeroFaltante + 1} do CPF.`);
 
+// Loop para encontrar o número que satisfaz o CPF
 for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQueSatisfaz + 1){
     CPF[numeroFaltante] = numeroQueSatisfaz
     firstDigitCheck()
@@ -49,6 +51,8 @@ for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQue
     } 
     
 }
+
+// Identifica a região do CPF
 switch(CPF[8]){
     case 0 : regiao = 'Rio Grande do Sul'; break;
     case 1 : regiao = 'Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins'; break;
