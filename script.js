@@ -3,10 +3,18 @@
 let CPF = [1, 9, 2, 1, 1, 5, 2, 3, null, null, 9]
 let firstDigit;
 let secondDigit;
-let numeroQueSatisfaz = 0;
-let numeroFaltante = CPF.indexOf(null)
+let numeroQueSatisfaz;
+let numeroFaltante = CPF.slice(0,9).indexOf(null)
+let numeroFaltanteVerificador = CPF.slice(9,11).indexOf(null) + 9
+let numeroVerificadorPresente;
 
+if (numeroFaltanteVerificador == 9){
+    numeroVerificadorPresente = 10
+} else {
+    numeroVerificadorPresente = 9
+}
 
+let numeroFixo = CPF[numeroVerificadorPresente]
 
 
 function firstDigitCheck(){
@@ -34,7 +42,7 @@ for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQue
     CPF[numeroFaltante] = numeroQueSatisfaz
     firstDigitCheck()
     secondDigitCheck()
-    if(CPF[10] == 9){
+    if(CPF[numeroVerificadorPresente] == numeroFixo){
         console.log(`O número que satisfaz o CPF é ${numeroQueSatisfaz}`);
         break
     } 
@@ -42,6 +50,4 @@ for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQue
 }
 
 console.log(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')}.`);
-
-
 
