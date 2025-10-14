@@ -1,22 +1,21 @@
 'use strict'
 
-let CPF = [1, 9, 2, 1, 1, 5, 2, 3, null, null, 9]
+let CPF = [1, null, 2, 1, 1, 5, 2, 3, 3, null, 9]
 let firstDigit;
 let secondDigit;
-let numeroQueSatisfaz;
-let numeroFaltante = CPF.slice(0,9).indexOf(null)
-let numeroFaltanteVerificador = CPF.slice(9,11).indexOf(null) + 9
-let numeroVerificadorPresente;
-let regiao;
+let missingNumber = CPF.slice(0,9).indexOf(null)
+let MissingNumberChecker = CPF.slice(9,11).indexOf(null) + 9
+let PresentVerifierNumber;
+let region;
 
 // Identifica a posição do número faltante e a posição do dígito verificador presente
-if (numeroFaltanteVerificador == 9){
-    numeroVerificadorPresente = 10
+if (MissingNumberChecker == 9){
+    PresentVerifierNumber = 10
 } else {
-    numeroVerificadorPresente = 9
+    PresentVerifierNumber = 9
 }
 
-let numeroFixo = CPF[numeroVerificadorPresente]
+let fixedNumber = CPF[PresentVerifierNumber]
 
 // Funções para calcular os dígitos verificadores
 function firstDigitCheck(){
@@ -38,14 +37,14 @@ function secondDigitCheck(){
 }
 
 // Informa a posição do número faltante e calcula o número que satisfaz o CPF
-console.log(`O número faltante está na posição ${numeroFaltante + 1} do CPF.`);
+console.log(`O número faltante está na posição ${missingNumber + 1} do CPF.`);
 
 // Loop para encontrar o número que satisfaz o CPF
-for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQueSatisfaz + 1){
-    CPF[numeroFaltante] = numeroQueSatisfaz
+for(let numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQueSatisfaz + 1){
+    CPF[missingNumber] = numeroQueSatisfaz
     firstDigitCheck()
     secondDigitCheck()
-    if(CPF[numeroVerificadorPresente] == numeroFixo){
+    if(CPF[PresentVerifierNumber] == fixedNumber){
         console.log(`O número que satisfaz o CPF é ${numeroQueSatisfaz}`);
         break
     } 
@@ -54,18 +53,18 @@ for(numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQue
 
 // Identifica a região do CPF
 switch(CPF[8]){
-    case 0 : regiao = 'Rio Grande do Sul'; break;
-    case 1 : regiao = 'Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins'; break;
-    case 2 : regiao = 'Amazonas, Pará, Roraima, Amapá, Acre e Rondônia'; break;
-    case 3 : regiao = 'Ceará, Maranhão e Piauí'; break;
-    case 4 : regiao = 'Paraíba, Pernambuco, Alagoas e Rio Grande do Norte'; break;
-    case 5 : regiao = 'Bahia e Sergipe'; break;
-    case 6 : regiao = 'Minas Gerais'; break;
-    case 7 : regiao = 'Rio de Janeiro e Espírito Santo'; break;
-    case 8 : regiao = 'São Paulo'; break;
-    case 9 : regiao = 'Paraná e Santa Catarina'; break;
-    default: regiao = 'Número inválido'; 
+    case 0 : region = 'Rio Grande do Sul'; break;
+    case 1 : region = 'Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins'; break;
+    case 2 : region = 'Amazonas, Pará, Roraima, Amapá, Acre e Rondônia'; break;
+    case 3 : region = 'Ceará, Maranhão e Piauí'; break;
+    case 4 : region = 'Paraíba, Pernambuco, Alagoas e Rio Grande do Norte'; break;
+    case 5 : region = 'Bahia e Sergipe'; break;
+    case 6 : region = 'Minas Gerais'; break;
+    case 7 : region = 'Rio de Janeiro e Espírito Santo'; break;
+    case 8 : region = 'São Paulo'; break;
+    case 9 : region = 'Paraná e Santa Catarina'; break;
+    default: region = 'Número inválido'; 
 }
 
-console.log(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${regiao}.`);
+console.log(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${region}.`);
 
