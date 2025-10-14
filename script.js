@@ -1,13 +1,13 @@
 'use strict'
-
-let CPF = [1, null, 2, 1, 1, 5, 2, 3, 3, null, 9]
+let CPFPrompt = prompt('Digite um CPF com 9 dígitos, seguido de dois pontos e os dois dígitos verificadores. Use um ponto de interrogação (?) para o dígito faltante. Exemplo: 12345678912 ou 12345678?12 ou 123456789?2 ou 1234567891?')
+let CPF = CPFPrompt.split('')
 let firstDigit;
 let secondDigit;
-let missingNumber = CPF.slice(0,9).indexOf(null)
-let MissingNumberChecker = CPF.slice(9,11).indexOf(null) + 9
+let missingNumber = CPF.slice(0,9).indexOf('?')
+let MissingNumberChecker = CPF.slice(9,11).indexOf('?') + 9
 let PresentVerifierNumber;
 let region;
-
+console.log(CPF)
 // Identifica a posição do número faltante e a posição do dígito verificador presente
 if (MissingNumberChecker == 9){
     PresentVerifierNumber = 10
@@ -52,7 +52,7 @@ for(let numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numer
 }
 
 // Identifica a região do CPF
-switch(CPF[8]){
+switch(parseInt(CPF[8])){
     case 0 : region = 'Rio Grande do Sul'; break;
     case 1 : region = 'Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins'; break;
     case 2 : region = 'Amazonas, Pará, Roraima, Amapá, Acre e Rondônia'; break;
@@ -66,5 +66,8 @@ switch(CPF[8]){
     default: region = 'Número inválido'; 
 }
 
-console.log(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${region}.`);
+document.write(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${region}.`);
+
+
+
 
