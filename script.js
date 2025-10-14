@@ -66,7 +66,9 @@ switch(parseInt(CPF[8])){
     default: region = 'Número inválido'; 
 }
 
-document.write(`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${region}.`);
+let result = document.getElementById('result')
+result.innerHTML = (`O primeiro digito verificador é ${CPF[9]} e o segundo dígito verificador é ${CPF[10]}. O CPF completo é ${CPF.slice(0, 3).join('')}.${CPF.slice(3,6).join('')}.${CPF.slice(6,9).join('')}-${CPF.slice(9,11).join('')} localizado na regiao de ${region}.`); 
+
 
 
 

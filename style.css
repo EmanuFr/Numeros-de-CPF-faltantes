@@ -7,3 +7,14 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+p{
+    background-color: rgb(250, 246, 255);
+    border: 5px solid rgb(28, 19, 129);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+h1{
+    color:darkblue
+}
