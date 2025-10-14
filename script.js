@@ -7,7 +7,7 @@ let missingNumber = CPF.slice(0,9).indexOf('?')
 let MissingNumberChecker = CPF.slice(9,11).indexOf('?') + 9
 let PresentVerifierNumber;
 let region;
-console.log(CPF)
+
 // Identifica a posição do número faltante e a posição do dígito verificador presente
 if (MissingNumberChecker == 9){
     PresentVerifierNumber = 10
@@ -36,8 +36,6 @@ function secondDigitCheck(){
     }
 }
 
-// Informa a posição do número faltante e calcula o número que satisfaz o CPF
-console.log(`O número faltante está na posição ${missingNumber + 1} do CPF.`);
 
 // Loop para encontrar o número que satisfaz o CPF
 for(let numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQueSatisfaz + 1){
@@ -45,7 +43,6 @@ for(let numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numer
     firstDigitCheck()
     secondDigitCheck()
     if(CPF[PresentVerifierNumber] == fixedNumber){
-        console.log(`O número que satisfaz o CPF é ${numeroQueSatisfaz}`);
         break
     } 
     
