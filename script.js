@@ -1,5 +1,5 @@
 'use strict'
-let CPFPrompt = prompt('Digite um CPF com 9 dígitos, seguido de dois pontos e os dois dígitos verificadores. Use um ponto de interrogação (?) para o dígito faltante. Exemplo: 12345678912 ou 12345678?12 ou 123456789?2 ou 1234567891?')
+let CPFPrompt = prompt('Digite um CPF com 9 dígitos, seguido de dois pontos e os dois dígitos verificadores. Use um ponto de interrogação (?) para o dígito faltante (Podendo ser um numero faltante entre os 9 primeiros e um digito verificados). Exemplo: 12345678912 ou 12345678?12 ou 123456789?2 ou 1234567891?')
 let CPF = CPFPrompt.split('')
 let firstDigit;
 let secondDigit;
