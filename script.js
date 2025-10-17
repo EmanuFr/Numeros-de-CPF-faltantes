@@ -38,8 +38,8 @@ function secondDigitCheck(){
 
 
 // Loop para encontrar o número que satisfaz o CPF
-for(let numeroQueSatisfaz = 0; numeroQueSatisfaz <= 9; numeroQueSatisfaz = numeroQueSatisfaz + 1){
-    CPF[missingNumber] = numeroQueSatisfaz
+for(let i = 0; i <= 9; i++){
+    CPF[missingNumber] = i
     firstDigitCheck()
     secondDigitCheck()
     if(CPF[PresentVerifierNumber] == fixedNumber){
